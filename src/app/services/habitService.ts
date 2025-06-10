@@ -5,13 +5,17 @@ import {
   doc,
   getDoc,
   getDocs,
+  orderBy,
+  query,
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { Habit } from "../dashboard/components/type/habitType";
 export const getHabitsFromDB = async (userId: string) => {
   const habitRef = collection(db, "users", userId, "habits");
-  const snapshot = await getDocs(habitRef);
+  const q = query(habitRef, orderBy("order"));
+  const snapshot = await getDocs(q);
+
   return snapshot.docs.map((doc) => ({
     id: doc.id,
     name: doc.data().name,

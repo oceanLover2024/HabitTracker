@@ -1,4 +1,4 @@
-import { useEscape } from "@/app/lib/hooks";
+import { useEscape } from "@/app/lib/hooks/useEscape";
 import styles from "../CreateModal.module.css";
 import { useState } from "react";
 type NoteModal = { onClose: () => void; onSave: (content: string) => void };

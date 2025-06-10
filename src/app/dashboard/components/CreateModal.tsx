@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./CreateModal.module.css";
 import { FaStarOfLife } from "react-icons/fa6";
-import { useEscape } from "@/app/lib/hooks";
+import { useEscape } from "@/app/lib/hooks/useEscape";
 type CreateModalProps = {
   onClose: () => void;
   onSave: (name: string, goal: number) => void;

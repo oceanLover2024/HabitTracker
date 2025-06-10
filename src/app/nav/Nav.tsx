@@ -9,7 +9,7 @@ import { auth } from "../lib/firebase";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import HowModal from "../dashboard/components/howItWorks/HowModal";
 const Nav = () => {
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
   const pathname = usePathname();
   const [showHow, setshowHow] = useState<boolean>(false);
   const [contentKey, setContentKey] = useState<string>("");
@@ -18,10 +18,11 @@ const Nav = () => {
     setContentKey(contentKey);
     setshowHow(true);
   };
+
   return (
     <nav className={styles.nav}>
       <div className={styles.left}>
-        <Link href="/" className={styles.logo}>
+        <Link href={user ? "/dashboard" : "/"} className={styles.logo}>
           {pathname === "/" ? "✅Habit Tracker" : "Habit Tracker"}
         </Link>
         {user && (
@@ -93,7 +94,7 @@ const Nav = () => {
               <span> Login</span>
             </Link>
 
-            <Link href="/dashboard">
+            <Link href="/auth/register">
               <button className={styles.start_today}>
                 <span> Start Today</span>
               </button>

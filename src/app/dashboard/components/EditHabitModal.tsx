@@ -2,7 +2,7 @@ import styles from "./CreateModal.module.css";
 import { FaStarOfLife } from "react-icons/fa6";
 import { Habit } from "./type/habitType";
 import { useState } from "react";
-import { useEscape } from "@/app/lib/hooks";
+import { useEscape } from "@/app/lib/hooks/useEscape";
 type EditHabitModalProps = {
   onClose: () => void;
   handleEditHabit: (habit: Habit) => void;

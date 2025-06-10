@@ -1,7 +1,12 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
-
+import { useAuth } from "./contexts/AuthContext";
+import Link from "next/link";
 export default function Home() {
+  const { user, isLoading } = useAuth();
+  if (isLoading) return;
+  if (user) return;
   return (
     <>
       <div className={styles.wrapper}>
@@ -12,9 +17,9 @@ export default function Home() {
           Finally, a daily habit tracker that helps you do more, by doing less.
         </div>
         <div className={styles.btn_text_wrapper}>
-          <button className={styles.start_btn}>
-            ✅Start Habit Tracker today
-          </button>
+          <Link href="/auth/register" className={styles.start_link}>
+            <span>✅Start Habit Tracker today</span>
+          </Link>
           <div className={styles.below_btn_text}>100% free forever</div>
         </div>
       </div>
@@ -114,9 +119,9 @@ export default function Home() {
           That&apos;s why DailyHabits is a 100% free to use.
         </div>
         <div className={styles.btn_text_wrapper}>
-          <button className={styles.start_btn}>
-            ✅Start Habit Tracker today
-          </button>
+          <Link href="/auth/register" className={styles.start_link}>
+            <span>✅Start Habit Tracker today</span>
+          </Link>
           <div className={styles.below_btn_text}>100% free forever</div>
         </div>
       </div>

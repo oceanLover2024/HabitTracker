@@ -125,7 +125,7 @@ const HabitTable = ({
                   draggable={true}
                   onDragStart={() => handleDragStart(habit.id)}
                   onDragOver={handleDragOver}
-                  onDrag={() => handleDrop(habit.id)}
+                  onDrop={(e) => handleDrop(e, habit.id)}
                 >
                   <td
                     onMouseEnter={() => setHoverId(habit.id)}
