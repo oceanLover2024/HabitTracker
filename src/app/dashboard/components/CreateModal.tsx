@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./CreateModal.module.css";
 import { FaStarOfLife } from "react-icons/fa6";
 import { useEscape } from "@/app/lib/hooks";

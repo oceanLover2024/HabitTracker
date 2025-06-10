@@ -23,9 +23,9 @@ export default function Home() {
       </div>
 
       <div className={styles.part2_text}>
-        It's really simple.
+        It&apos;s really simple.
         <br />
-        Here's how it works!
+        Here&apos;s how it works!
       </div>
       <div className={styles.container}>
         <div className={styles.pic_text_wrapper}>
@@ -34,8 +34,8 @@ export default function Home() {
           </div>
           <div className={styles.instruction}>
             With a simple calendar view, you can see your activity for the
-            entire month to see how you're doing and which areas you might need
-            to focus on.
+            entire month to see how you&apos;re doing and which areas you might
+            need to focus on.
           </div>
         </div>
         <Image
@@ -57,11 +57,12 @@ export default function Home() {
             Set flexible goals instead of streaks.
           </div>
           <div className={styles.instruction}>
-            Streaks break, because life happens. But don't let that stop your
-            progress. <br />
+            Streaks break, because life happens. But don&apos;t let that stop
+            your progress. <br />
             <br />
             Goals are based on flexible consistency, which makes it okay to fail
-            sometimes. It's more important that you continue doing your habit.
+            sometimes. It&apos;s more important that you continue doing your
+            habit.
           </div>
         </div>
       </div>
@@ -99,8 +100,8 @@ export default function Home() {
             as done right there on your mobile. Or perhaps you had an epiphany
             and you want to make a note of it.
             <br />
-            <br /> Don't lose that thought. Easily access DailyHabits through
-            your mobile browser.
+            <br /> Don&apos;t lose that thought. Easily access DailyHabits
+            through your mobile browser.
           </div>
         </div>
       </div>
@@ -110,7 +111,7 @@ export default function Home() {
         </h1>
         <div className={styles.text}>
           Our mission in life is to help others achieve their full potential.
-          That's why DailyHabits is a 100% free to use.
+          That&apos;s why DailyHabits is a 100% free to use.
         </div>
         <div className={styles.btn_text_wrapper}>
           <button className={styles.start_btn}>

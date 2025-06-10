@@ -7,7 +7,7 @@ import { CiMenuBurger } from "react-icons/ci";
 import { FiTrash } from "react-icons/fi";
 import { BsPencil } from "react-icons/bs";
 import { MdOutlineArchive } from "react-icons/md";
-import drag from "@/app/lib/drag";
+import useDrag from "@/app/lib/hooks/useDrag";
 import { useAuth } from "@/app/contexts/AuthContext";
 type Props = {
   year: number;
@@ -51,7 +51,7 @@ const HabitTable = ({
   };
   const achieve_goal = (habit: Habit) => achieved_count(habit.id) >= habit.goal;
   const [hoverId, setHoverId] = useState<string | null>(null);
-  const { handleDragStart, handleDragOver, handleDrop } = drag(
+  const { handleDragStart, handleDragOver, handleDrop } = useDrag(
     habits,
     setHabits,
     user.uid

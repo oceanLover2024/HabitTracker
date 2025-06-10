@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { Habit } from "../dashboard/components/type/habitType";
+import { Habit } from "../../dashboard/components/type/habitType";
 import { doc, updateDoc } from "firebase/firestore";
-import { db } from "./firebase";
+import { db } from "../firebase";
 
-const drag = (
+const useDrag = (
   habits: Habit[],
   setHabits: Dispatch<SetStateAction<Habit[]>>,
   userId: string
@@ -30,4 +30,4 @@ const drag = (
   };
   return { handleDragStart, handleDragOver, handleDrop };
 };
-export default drag;
+export default useDrag;
