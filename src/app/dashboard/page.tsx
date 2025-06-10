@@ -93,7 +93,7 @@ const DashboardPage = () => {
       setCheck(checkObj);
     };
     toFetchHabits();
-  }, [user, isLoading]);
+  }, [user, isLoading, router]);
   if (isLoading) return null;
   if (!user) return null;
 

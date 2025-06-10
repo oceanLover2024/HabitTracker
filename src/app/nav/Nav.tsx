@@ -9,7 +9,7 @@ import { auth } from "../lib/firebase";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import HowModal from "../dashboard/components/howItWorks/HowModal";
 const Nav = () => {
-  const { user, isLoading } = useAuth();
+  const { user } = useAuth();
   const pathname = usePathname();
   const [showHow, setshowHow] = useState<boolean>(false);
   const [contentKey, setContentKey] = useState<string>("");

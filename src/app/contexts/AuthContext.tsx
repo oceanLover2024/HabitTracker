@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
   useEffect(() => {
     if (user) router.push("/dashboard");
-  }, [user]);
+  }, [user, router]);
   return (
     <AuthContext.Provider value={{ user, isLoading }}>
       {children}
