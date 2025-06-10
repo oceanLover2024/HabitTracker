@@ -1,0 +1,131 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 60px;
+  background-color: white;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+}
+.right {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.link_to_login {
+  text-decoration: none;
+  color: gray;
+}
+.create_account_btn {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.create_account_btn:active {
+  background-color: white;
+}
+.start_today {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+.dropdown_wrapper {
+  position: relative;
+}
+
+.email {
+  font-size: 0.8 rem;
+  color: rgb(90, 88, 88);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.dropdown_menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.243);
+  border-radius: 5px;
+  min-width: 150px;
+  z-index: 10;
+  display: none;
+}
+.dropdown_wrapper:hover .dropdown_menu {
+  display: block;
+}
+.logout {
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: red;
+}
+
+.logout:hover {
+  background-color: red;
+  color: white;
+}
+.icon {
+  font-size: 24px;
+}
+.left {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+.howItWork {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  position: relative;
+  font-size: 0.8rem;
+  color: rgb(90, 88, 88);
+  cursor: pointer;
+}
+.left_icon {
+  font-size: 24px;
+  position: absolute;
+  bottom: 0.2rem;
+  right: -1.3rem;
+}
+.dropdown_how {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.243);
+  border-radius: 5px;
+  min-width: 180px;
+  z-index: 10;
+  display: none;
+  padding: 0.5rem 0;
+}
+.dropdown_wrapper:hover .dropdown_how {
+  display: block;
+}
+.how {
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+.how:hover {
+  background-color: rgba(214, 212, 212, 0.287);
+}

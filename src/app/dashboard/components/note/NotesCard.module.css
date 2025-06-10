@@ -1,0 +1,30 @@
+.note_wrapper {
+  border: 1px solid rgb(233, 233, 233);
+  min-height: 100px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.date {
+  color: gray;
+  overflow-wrap: break-word;
+}
+.first_line_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icons_wrapper {
+  display: flex;
+  gap: 1rem;
+  color: black;
+  opacity: 0;
+}
+.note_wrapper:hover .icons_wrapper {
+  opacity: 1;
+}
+.edit,
+.delete {
+  cursor: pointer;
+}
