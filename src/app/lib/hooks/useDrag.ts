@@ -13,7 +13,7 @@ const useDrag = (
   const handleDragStart = (habitId: string) => setDraggedId(habitId);
   const handleDragOver = (e: React.DragEvent) => e.preventDefault();
   const handleDrop = async (targetId: string) => {
-    if (!draggedId || draggedId === targetId) return;
+    if (!draggedId || draggedId === targetId || !userId) return;
     const newOrderHabits = [...habits];
     const fromIndex = newOrderHabits.findIndex((h) => h.id === draggedId);
     const toIndex = newOrderHabits.findIndex((h) => h.id === targetId);

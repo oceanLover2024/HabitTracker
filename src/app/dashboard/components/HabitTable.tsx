@@ -35,15 +35,12 @@ const HabitTable = ({
   setArchiveHabitId,
 }: Props) => {
   const { user } = useAuth();
-  if (!user) return;
   const getDaysInMonth = (year: number, month: number) =>
     new Date(year, month + 1, 0).getDate();
-
   const daysInMonth = Array.from(
     { length: getDaysInMonth(year, month) },
     (_, i) => i + 1
   );
-
   const achieved_count = (habitId: string): number => {
     const checkDays = check[habitId];
     if (!checkDays) return 0;
@@ -54,8 +51,9 @@ const HabitTable = ({
   const { handleDragStart, handleDragOver, handleDrop } = useDrag(
     habits,
     setHabits,
-    user.uid
+    user?.uid || ""
   );
+  if (!user) return;
   return (
     <>
       <div className={styles.table_wrapper}>
