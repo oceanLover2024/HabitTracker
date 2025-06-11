@@ -32,16 +32,28 @@ const AuthModal = ({
   const changeEmail = (email: string) => {
     const emailValidBoolean = isValidEmail(email);
     setEmail(email);
-    email !== ""
-      ? emailValidBoolean
-        ? setEmailError(false)
-        : setEmailError(true)
-      : setEmailError(false);
-    email ? setNonEmail(false) : setNonEmail(true);
+    if (email !== "") {
+      if (emailValidBoolean) {
+        setEmailError(false);
+      } else {
+        setEmailError(true);
+      }
+    } else {
+      setEmailError(false);
+    }
+    if (email) {
+      setNonEmail(false);
+    } else {
+      setNonEmail(true);
+    }
   };
   const changePassword = (password: string) => {
     setPassword(password);
-    password ? setNonPassword(false) : setNonPassword(true);
+    if (password) {
+      setNonPassword(false);
+    } else {
+      setNonPassword(true);
+    }
   };
   return (
     <div className={styles.wrapper}>
@@ -64,8 +76,11 @@ const AuthModal = ({
             }`}
           />
           <div className={styles.error_text}>
-            {emailError ? "Please enter a valid email address" : ""}
-            {nonEmail ? "Please enter your email" : ""}
+            {emailError
+              ? "Please enter a valid email address"
+              : nonEmail
+              ? "Please enter your email"
+              : ""}
           </div>
         </div>
         <div className={styles.input_wrapper}>

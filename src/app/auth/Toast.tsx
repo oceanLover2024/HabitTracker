@@ -7,7 +7,7 @@ type ToastProps = {
 };
 const Toast = ({ toastMessage, onClose }: ToastProps) => {
   useEffect(() => {
-    let timer = setTimeout(onClose, 2000);
+    const timer = setTimeout(onClose, 2000);
     return () => clearTimeout(timer);
   }, [onClose]);
   return (
