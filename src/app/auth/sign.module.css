@@ -1,3 +1,6 @@
+.outer {
+  position: relative;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -16,7 +19,7 @@
   flex-direction: column;
   align-items: center;
   width: 300px;
-  gap: 2rem;
+  gap: 1rem;
 }
 .input_wrapper {
   display: flex;
@@ -25,14 +28,25 @@
 }
 .input {
   padding: 10px;
-  border: 1px solid rgb(211, 210, 210);
   border-radius: 3px;
   width: 400px;
 }
-.input:hover {
+.correct_input_style {
+  border: 1px solid rgb(211, 210, 210);
+}
+.error_input_style {
+  border: 1px solid red;
+}
+.correct_input_style:hover {
   outline: 1px solid rgba(77, 175, 244, 0.735);
 }
-.input:focus {
+
+.error_input_style:focus {
+  outline: none;
+  box-shadow: 0 0 1px 3px rgba(255, 0, 0, 0.1);
+  padding: 10px;
+}
+.correct_input_style:focus {
   box-shadow: 0 0 1px 3px rgba(111, 189, 244, 0.252);
   padding: 10px;
   outline: 1px solid rgba(77, 175, 244, 0.735);
@@ -45,6 +59,7 @@
   border-radius: 3px;
   cursor: pointer;
   align-self: center;
+  margin-top: 0.8rem;
 }
 
 .forgot_link {
@@ -66,4 +81,19 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
+}
+.error_text {
+  color: red;
+}
+.password_wrapper {
+  position: relative;
+}
+
+.eye {
+  color: gray;
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
