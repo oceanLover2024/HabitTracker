@@ -54,7 +54,6 @@
   z-index: 10;
   display: none;
   padding: 0.5rem 0;
-  color: black;
 }
 .logout {
   width: 100%;
@@ -98,6 +97,7 @@
   text-align: left;
   cursor: pointer;
   font-size: 0.8rem;
+  color: black;
 }
 .dropdown_item:hover {
   background-color: rgba(214, 212, 212, 0.287);
