@@ -2,10 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 60px;
+  padding: 16px 5%;
   background-color: white;
 }
-
 .logo {
   font-weight: bold;
   font-size: 1.5rem;
@@ -17,7 +16,6 @@
   gap: 2rem;
   align-items: center;
 }
-
 .link_to_login {
   text-decoration: none;
   color: gray;
@@ -41,30 +39,20 @@
 .dropdown_wrapper {
   position: relative;
 }
-
-.email {
-  font-size: 0.8 rem;
-  color: rgb(90, 88, 88);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
+.dropdown_wrapper:hover .dropdown_menu {
+  display: block;
 }
-.dropdown_menu {
+.dropdown_box {
   position: absolute;
   top: 100%;
   left: 0;
   background-color: white;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.243);
   border-radius: 5px;
-  min-width: 150px;
+  min-width: 170px;
   z-index: 10;
   display: none;
-}
-.dropdown_wrapper:hover .dropdown_menu {
-  display: block;
+  padding: 0.5rem 0;
 }
 .logout {
   width: 100%;
@@ -75,50 +63,32 @@
   cursor: pointer;
   color: red;
 }
-
 .logout:hover {
   background-color: red;
   color: white;
-}
-.icon {
-  font-size: 24px;
 }
 .left {
   display: flex;
   align-items: baseline;
   gap: 1.5rem;
 }
-.howItWork {
+.dropdown_title {
   background-color: transparent;
   border: none;
   padding: 0.5rem;
-  position: relative;
   font-size: 0.8rem;
   color: rgb(90, 88, 88);
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
-.left_icon {
+.icon {
   font-size: 24px;
-  position: absolute;
-  bottom: 0.2rem;
-  right: -1.3rem;
 }
-.dropdown_how {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.243);
-  border-radius: 5px;
-  min-width: 180px;
-  z-index: 10;
-  display: none;
-  padding: 0.5rem 0;
-}
-.dropdown_wrapper:hover .dropdown_how {
+.dropdown_wrapper:hover .dropdown_box {
   display: block;
 }
-.how {
+.dropdown_item {
   width: 100%;
   padding: 8px 12px;
   background: none;
@@ -126,6 +96,27 @@
   text-align: left;
   cursor: pointer;
 }
-.how:hover {
+.dropdown_item:hover {
   background-color: rgba(214, 212, 212, 0.287);
+}
+.mobile_menu {
+  display: none;
+}
+@media (max-width: 600px) {
+  .mobile_menu {
+    display: block;
+  }
+  .desktop_menu {
+    display: none;
+  }
+  .logo {
+    font-size: 1.2rem;
+  }
+  .right {
+    gap: 1rem;
+  }
+  .mobile_dropdown_box {
+    left: auto;
+    right: 0;
+  }
 }

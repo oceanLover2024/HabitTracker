@@ -22,3 +22,13 @@
 .no_note {
   text-align: center;
 }
+@media (max-width: 1200px) {
+  .wrapper {
+    width: 70%;
+  }
+}
+@media (max-width: 600px) {
+  .wrapper {
+    width: 90%;
+  }
+}

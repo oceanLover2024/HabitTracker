@@ -1,15 +1,24 @@
 .table_wrapper {
-  margin: 40px auto 20px;
-  padding: 5px 60px;
+  margin: 40px auto 60px;
   overflow-x: auto;
+  position: relative;
+  width: 90%;
+  clip-path: inset(0);
 }
 .table {
   width: 100%;
-  min-width: 1300px;
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
 }
+.sticky_col {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05); /* 增加右邊陰影讓 sticky 效果更明顯 */
+}
+
 .table th,
 .table td {
   border: 1px solid rgb(233, 233, 233);

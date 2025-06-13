@@ -7,6 +7,7 @@ import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { CiMenuBurger } from "react-icons/ci";
 import HowModal from "../dashboard/components/howItWorks/HowModal";
 const Nav = () => {
   const { user } = useAuth();
@@ -25,39 +26,41 @@ const Nav = () => {
         <Link href={user ? "/dashboard" : "/"} className={styles.logo}>
           {pathname === "/" ? "✅Habit Tracker" : "Habit Tracker"}
         </Link>
-        {user && (
+        {pathname === "/dashboard" && user ? (
           <div className={styles.dropdown_wrapper}>
-            <button className={styles.howItWork}>
+            <button className={styles.dropdown_title}>
               How it works
-              <RiArrowDropDownLine className={styles.left_icon} />
+              <RiArrowDropDownLine className={styles.icon} />
             </button>
-            <div className={styles.dropdown_how}>
+            <div className={styles.dropdown_box}>
               <button
-                className={styles.how}
+                className={styles.dropdown_item}
                 onClick={() => handleHowModal("how")}
               >
                 How to use DailyHabits
               </button>
               <button
-                className={styles.how}
+                className={styles.dropdown_item}
                 onClick={() => handleHowModal("goals")}
               >
                 Why set goals
               </button>
               <button
-                className={styles.how}
+                className={styles.dropdown_item}
                 onClick={() => handleHowModal("notes")}
               >
                 When to make notes
               </button>
               <button
-                className={styles.how}
+                className={styles.dropdown_item}
                 onClick={() => handleHowModal("archive")}
               >
                 When to archive a goal
               </button>
             </div>
           </div>
+        ) : (
+          ""
         )}
       </div>
 
@@ -77,11 +80,23 @@ const Nav = () => {
         )}
         {user && (
           <div className={styles.dropdown_wrapper}>
-            <button className={styles.email}>
-              {user.email} <RiArrowDropDownLine className={styles.icon} />
+            <button className={styles.dropdown_title}>
+              <span className={styles.desktop_menu}>{user.email}</span>
+              <RiArrowDropDownLine
+                className={`${styles.icon} ${styles.desktop_menu}`}
+              />
+              <CiMenuBurger className={styles.mobile_menu} />
             </button>
+            <div
+              className={`${styles.dropdown_box} ${styles.mobile_dropdown_box}`}
+            >
+              <Link href="/Statistics">
+                <div className={styles.dropdown_item}>Statistics</div>
+              </Link>
 
-            <div className={styles.dropdown_menu}>
+              <button className={styles.dropdown_item}>
+                Delete your account
+              </button>
               <button onClick={handleLogout} className={styles.logout}>
                 Logout
               </button>

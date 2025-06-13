@@ -24,8 +24,8 @@ const AuthModal = ({
   isRegisterPage,
 }: AuthModalProps) => {
   const [emailError, setEmailError] = useState<boolean>(false);
-  const [nonEmail, setNonEmail] = useState<boolean>(false);
-  const [nonPassword, setNonPassword] = useState<boolean>(false);
+  const [noEmail, setNoEmail] = useState<boolean>(false);
+  const [noPassword, setNoPassword] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const isValidEmail = (email: string) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -42,17 +42,17 @@ const AuthModal = ({
       setEmailError(false);
     }
     if (email) {
-      setNonEmail(false);
+      setNoEmail(false);
     } else {
-      setNonEmail(true);
+      setNoEmail(true);
     }
   };
   const changePassword = (password: string) => {
     setPassword(password);
     if (password) {
-      setNonPassword(false);
+      setNoPassword(false);
     } else {
-      setNonPassword(true);
+      setNoPassword(true);
     }
   };
   return (
@@ -70,7 +70,7 @@ const AuthModal = ({
             value={email}
             onChange={(e) => changeEmail(e.target.value)}
             className={`${styles.input} ${
-              emailError || nonEmail
+              emailError || noEmail
                 ? styles.error_input_style
                 : styles.correct_input_style
             }`}
@@ -78,7 +78,7 @@ const AuthModal = ({
           <div className={styles.error_text}>
             {emailError
               ? "Please enter a valid email address"
-              : nonEmail
+              : noEmail
               ? "Please enter your email"
               : ""}
           </div>
@@ -95,7 +95,7 @@ const AuthModal = ({
               type={showPassword ? "text" : "password"}
               onChange={(e) => changePassword(e.target.value)}
               className={`${styles.input} ${
-                nonPassword
+                noPassword
                   ? styles.error_input_style
                   : styles.correct_input_style
               }`}
@@ -108,7 +108,7 @@ const AuthModal = ({
             </span>
           </div>
           <div className={styles.error_text}>
-            {nonPassword ? "Please enter your password" : ""}
+            {noPassword ? "Please enter your password" : ""}
             {isRegisterPage
               ? password.length < 6 && password.length > 0
                 ? "Password must be minimum of 6 characters"

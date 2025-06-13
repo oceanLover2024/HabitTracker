@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: 50px;
-  padding: 100px 0;
+  padding: 100px 10%;
 }
 .wrapper_gray {
   background-color: rgba(193, 190, 190, 0.156);
@@ -35,7 +35,6 @@
 }
 .start_link span {
   color: white;
-
   font-size: 1.2rem;
 }
 .below_btn_text {
@@ -62,7 +61,8 @@
   justify-content: center;
   gap: 3rem;
   width: 100%;
-  height: 450px;
+  padding: 120px 10%;
+  flex-wrap: wrap;
 }
 .container_white {
   background-color: white;
@@ -89,4 +89,47 @@
   justify-content: center;
   height: 2rem;
   font-size: 0.8rem;
+}
+.image_wrapper {
+  position: relative;
+  width: 40%;
+  aspect-ratio: 4 / 3;
+}
+.img {
+  object-fit: contain;
+}
+@media (max-width: 1200px) {
+  .demo img {
+    width: 80%;
+  }
+  .pic_text_wrapper {
+    width: 60%;
+  }
+  .image_wrapper {
+    width: 80%;
+  }
+}
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 50px 5%;
+  }
+  .h1 {
+    font-size: 36px;
+  }
+  .demo img {
+    width: 90%;
+  }
+  .part2_text {
+    font-size: 30px;
+    padding: 40px;
+  }
+  .pic_text_wrapper {
+    width: 90%;
+  }
+  .container {
+    padding: 80px 5%;
+  }
+  .image_wrapper {
+    width: 90%;
+  }
 }

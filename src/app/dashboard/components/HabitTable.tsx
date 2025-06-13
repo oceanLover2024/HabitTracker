@@ -63,7 +63,7 @@ const HabitTable = ({
               <th
                 rowSpan={2}
                 style={{ width: "130px" }}
-                className={styles.habits_text}
+                className={`${styles.habits_text} ${styles.sticky_col}`}
               >
                 Habits
               </th>
@@ -128,6 +128,7 @@ const HabitTable = ({
                   onDrop={(e) => handleDrop(e, habit.id)}
                 >
                   <td
+                    className={styles.sticky_col}
                     onMouseEnter={() => setHoverId(habit.id)}
                     onMouseLeave={() => setHoverId(null)}
                   >

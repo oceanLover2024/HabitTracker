@@ -28,3 +28,8 @@
 .delete {
   cursor: pointer;
 }
+@media (max-width: 600px) {
+  .icons_wrapper {
+    opacity: 1;
+  }
+}

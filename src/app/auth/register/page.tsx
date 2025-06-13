@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import AuthModal from "../AuthModal";
 import styles from "../sign.module.css";
-import Toast from "../Toast";
+import Toast from "../../components/Toast";
 const Register = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");

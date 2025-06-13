@@ -43,20 +43,24 @@ export default function Home() {
             need to focus on.
           </div>
         </div>
-        <Image
-          src={"/table.png"}
-          alt={"loading entire month"}
-          width={600}
-          height={200}
-        />
+        <div className={styles.image_wrapper}>
+          <Image
+            src={"/table.png"}
+            alt={"loading entire month"}
+            fill
+            className={styles.img}
+          />
+        </div>
       </div>
       <div className={`${styles.container} ${styles.container_white}`}>
-        <Image
-          src={"/createNew.png"}
-          alt={"loading entire month"}
-          width={560}
-          height={300}
-        />
+        <div className={styles.image_wrapper}>
+          <Image
+            src={"/createNew.png"}
+            alt={"loading entire month"}
+            fill
+            className={styles.img}
+          />
+        </div>
         <div className={styles.pic_text_wrapper}>
           <div className={styles.subtitle}>
             Set flexible goals instead of streaks.
@@ -84,20 +88,24 @@ export default function Home() {
             Ultimately, you are the best judge of your own journey.
           </div>
         </div>
-        <Image
-          src={"/notes.png"}
-          alt={"loading entire month"}
-          width={560}
-          height={300}
-        />
+        <div className={styles.image_wrapper}>
+          <Image
+            src={"/notes.png"}
+            alt={"loading entire month"}
+            fill
+            className={styles.img}
+          />
+        </div>
       </div>
       <div className={`${styles.container} ${styles.container_white}`}>
-        <Image
-          src={"/mobile.png"}
-          alt={"loading entire month"}
-          width={560}
-          height={300}
-        />
+        <div className={styles.image_wrapper}>
+          <Image
+            src={"/mobile.png"}
+            alt={"mobile version"}
+            fill
+            className={styles.img}
+          />
+        </div>
         <div className={styles.pic_text_wrapper}>
           <div className={styles.subtitle}>Fully responsive on mobile.</div>
           <div className={styles.instruction}>

@@ -5,10 +5,8 @@ import { useRouter } from "next/navigation";
 import HabitTable from "./components/HabitTable";
 import MonthSelector from "./components/MonthSelector";
 import NoteSection from "./components/note/NoteSection";
-import CreateModal from "./components/CreateModal";
 import { Habit } from "./components/type/habitType";
 import styles from "./page.module.css";
-import EditHabitModal from "./components/EditHabitModal";
 import {
   addHabitToDB,
   archiveHabitFromDB,
@@ -18,10 +16,10 @@ import {
   toggleCheckDayToDB,
 } from "../services/habitService";
 import ConfirmModal from "./components/ConfirmModal";
+import CreateModal from "./components/CreateModal";
 const DashboardPage = () => {
   const { user, isLoading } = useAuth();
   const router = useRouter();
-
   const today = new Date();
   const [month, setMonth] = useState<number>(today.getMonth());
   const [year, setYear] = useState<number>(today.getFullYear());
@@ -33,7 +31,6 @@ const DashboardPage = () => {
   const [deleteHabitId, setDeleteHabitId] = useState<string | null>(null);
   const [editHabit, setEditHabit] = useState<Habit | null>(null);
   const [archiveHabitId, setArchiveHabitId] = useState<string | null>(null);
-
   const toggleCheck = async (habitId: string, dateStr: string) => {
     if (!user) return;
     await toggleCheckDayToDB(user.uid, habitId, dateStr);
@@ -47,14 +44,12 @@ const DashboardPage = () => {
     const newHabit = await addHabitToDB(user.uid, name, goal);
     setHabits((prev) => [...prev, newHabit]);
   };
-
   const handleDeleteHabit = async (id: string) => {
     if (!user) return;
     await deleteHabitFromDB(user.uid, id);
     setHabits((prev) => prev.filter((h) => h.id !== id));
     setDeleteHabitId(null);
   };
-
   const handleEditHabit = async (updatedHabit: Habit) => {
     if (!user) return;
     await editHabitFromDB(user.uid, updatedHabit);
@@ -76,7 +71,6 @@ const DashboardPage = () => {
     setMonth(month);
     setYear(year);
   };
-
   useEffect(() => {
     if (!user && !isLoading) {
       router.push("/auth/login");
@@ -96,7 +90,6 @@ const DashboardPage = () => {
   }, [user, isLoading, router]);
   if (isLoading) return null;
   if (!user) return null;
-
   return (
     <div>
       <MonthSelector
@@ -135,10 +128,11 @@ const DashboardPage = () => {
         />
       )}
       {editHabit && (
-        <EditHabitModal
+        <CreateModal
           onClose={() => setEditHabit(null)}
-          handleEditHabit={handleEditHabit}
-          editHabit={editHabit}
+          onSave={(name, goal) => handleEditHabit({ ...editHabit, name, goal })}
+          habit={editHabit}
+          title="Edit Habit"
         />
       )}
       <button onClick={() => setShowModel(true)} className={styles.btn}>
@@ -146,7 +140,11 @@ const DashboardPage = () => {
       </button>
 
       {showModel && (
-        <CreateModal onClose={() => setShowModel(false)} onSave={addHabit} />
+        <CreateModal
+          onClose={() => setShowModel(false)}
+          onSave={addHabit}
+          title="Create New Habit"
+        />
       )}
       <NoteSection />
     </div>
