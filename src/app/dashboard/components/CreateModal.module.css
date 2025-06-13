@@ -34,6 +34,7 @@
   border: none;
   font-size: large;
   cursor: pointer;
+  color: black;
 }
 .form_wrapper {
   display: flex;
@@ -49,7 +50,7 @@
 .input {
   padding: 10px;
   border-radius: 3px;
-  width: 400px;
+  width: 100%;
 }
 .correct_input_style {
   border: 1px solid rgb(211, 210, 210);

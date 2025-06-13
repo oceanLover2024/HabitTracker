@@ -17,6 +17,7 @@ import {
 } from "../services/habitService";
 import ConfirmModal from "./components/ConfirmModal";
 import CreateModal from "./components/CreateModal";
+import Add_btn from "../components/Add_btn";
 const DashboardPage = () => {
   const { user, isLoading } = useAuth();
   const router = useRouter();
@@ -26,7 +27,7 @@ const DashboardPage = () => {
   const [check, setCheck] = useState<Record<string, Record<string, boolean>>>(
     {}
   );
-  const [showModel, setShowModel] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [habits, setHabits] = useState<Habit[]>([]);
   const [deleteHabitId, setDeleteHabitId] = useState<string | null>(null);
   const [editHabit, setEditHabit] = useState<Habit | null>(null);
@@ -135,13 +136,11 @@ const DashboardPage = () => {
           title="Edit Habit"
         />
       )}
-      <button onClick={() => setShowModel(true)} className={styles.btn}>
-        + New Habit
-      </button>
+      <Add_btn setShowModal={setShowModal} from="Habit" />
 
-      {showModel && (
+      {showModal && (
         <CreateModal
-          onClose={() => setShowModel(false)}
+          onClose={() => setShowModal(false)}
           onSave={addHabit}
           title="Create New Habit"
         />

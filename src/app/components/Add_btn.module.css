@@ -1,7 +1,11 @@
 .btn {
-  margin-left: 5%;
   padding: 0.5rem 1rem;
   border: 1px solid rgb(214, 210, 210);
   background-color: transparent;
   cursor: pointer;
+  color: black;
+}
+
+.from {
+  margin-left: 5%;
 }

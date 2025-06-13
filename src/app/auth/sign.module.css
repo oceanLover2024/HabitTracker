@@ -95,6 +95,9 @@
   right: 0.5rem;
   transform: translateY(-50%);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 600px) {
   .input {

@@ -11,9 +11,10 @@ import {
   getNotesFromDB,
 } from "@/app/services/notesService";
 import { useAuth } from "@/app/contexts/AuthContext";
+import Add_btn from "@/app/components/Add_btn";
 const NoteSection = () => {
   const [notes, setNotes] = useState<Note[]>([]);
-  const [showNoteModal, setShowNoteModel] = useState<boolean>(false);
+  const [showNoteModal, setShowNoteModal] = useState<boolean>(false);
   const [editNote, setEditNote] = useState<Note | null>(null);
   const { user } = useAuth();
   const todayStr = new Date().toLocaleDateString("en-US", {
@@ -33,7 +34,7 @@ const NoteSection = () => {
     if (!user) return;
     const newNote = await addNoteToDB(user.uid, todayStr, content);
     setNotes((prev) => [newNote, ...prev]);
-    setShowNoteModel(false);
+    setShowNoteModal(false);
   };
   const handleEditNote = async (updatedNote: Note) => {
     if (!user) return;
@@ -52,12 +53,7 @@ const NoteSection = () => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <div className={styles.notes_title}>Notes</div>
-        <button
-          className={styles.new_note_btn}
-          onClick={() => setShowNoteModel(true)}
-        >
-          + New Note
-        </button>
+        <Add_btn setShowModal={setShowNoteModal} from="Note" />
       </div>
       {notes.length === 0 ? (
         <div className={styles.no_note}>
@@ -71,7 +67,7 @@ const NoteSection = () => {
         />
       )}
       {showNoteModal && (
-        <NoteModal onClose={() => setShowNoteModel(false)} onSave={addNote} />
+        <NoteModal onClose={() => setShowNoteModal(false)} onSave={addNote} />
       )}
       {editNote && (
         <EditNoteModal

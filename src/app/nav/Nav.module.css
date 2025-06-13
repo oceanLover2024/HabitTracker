@@ -35,6 +35,7 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
+  color: black;
 }
 .dropdown_wrapper {
   position: relative;
@@ -53,6 +54,7 @@
   z-index: 10;
   display: none;
   padding: 0.5rem 0;
+  color: black;
 }
 .logout {
   width: 100%;
@@ -95,6 +97,7 @@
   border: none;
   text-align: left;
   cursor: pointer;
+  font-size: 0.8rem;
 }
 .dropdown_item:hover {
   background-color: rgba(214, 212, 212, 0.287);

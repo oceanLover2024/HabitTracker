@@ -13,12 +13,7 @@
 .notes_title {
   color: blue;
 }
-.new_note_btn {
-  padding: 0.5rem 1rem;
-  border: 1px solid rgb(214, 210, 210);
-  background-color: transparent;
-  cursor: pointer;
-}
+
 .no_note {
   text-align: center;
 }
