@@ -6,7 +6,6 @@ import HabitTable from "./components/HabitTable";
 import MonthSelector from "./components/MonthSelector";
 import NoteSection from "./components/note/NoteSection";
 import { Habit } from "./components/type/habitType";
-import styles from "./page.module.css";
 import {
   addHabitToDB,
   archiveHabitFromDB,
