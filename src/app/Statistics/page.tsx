@@ -12,7 +12,7 @@ import NumberStat from "./components/NumberStat";
 import getMonthRates from "./components/getMonthRates";
 import MonthlyLineChart from "./components/MonthlyLineChart";
 const Statistics = () => {
-  const monthText = [
+  /*const monthText = [
     "January",
     "February",
     "March",
@@ -25,10 +25,10 @@ const Statistics = () => {
     "October",
     "November",
     "December",
-  ];
+  ];*/
   const { user, isLoading } = useAuth();
   const router = useRouter();
-  const { year, month, handleChangeMonth, today } = useMonth();
+  const { year, month, handleChangeMonth } = useMonth();
   const { check, habits } = useHabits(user?.uid);
 
   useEffect(() => {

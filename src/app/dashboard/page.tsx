@@ -11,7 +11,6 @@ import {
   archiveHabitFromDB,
   deleteHabitFromDB,
   editHabitFromDB,
-  getHabitsFromDB,
   toggleCheckDayToDB,
 } from "../services/habitService";
 import ConfirmModal from "./components/ConfirmModal";
@@ -82,7 +81,6 @@ const DashboardPage = () => {
         month={month}
         handleChangeMonth={handleChangeMonth}
       />
-
       <HabitTable
         year={year}
         month={month}

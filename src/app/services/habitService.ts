@@ -32,13 +32,14 @@ export const addHabitToDB = async (
 ) => {
   const habitRef = collection(db, "users", userId, "habits");
   const habitLength = (await getDocs(habitRef)).docs.length;
+  const createdAt = new Date().toLocaleDateString("sv-SE");
   const docRef = await addDoc(habitRef, {
     name,
     goal,
-    createdAt: new Date().toLocaleDateString("sv-SE"),
+    createdAt,
     order: habitLength,
   });
-  return { id: docRef.id, name, goal };
+  return { id: docRef.id, name, goal, createdAt };
 };
 export const deleteHabitFromDB = async (userId: string, habitId: string) => {
   const habitDoc = doc(db, "users", userId, "habits", habitId);
