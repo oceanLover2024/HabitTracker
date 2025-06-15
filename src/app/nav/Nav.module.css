@@ -63,6 +63,7 @@
   text-align: left;
   cursor: pointer;
   color: red;
+  font-size: 0.8rem;
 }
 .logout:hover {
   background-color: red;

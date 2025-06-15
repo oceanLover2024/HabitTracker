@@ -17,20 +17,19 @@ import {
 import ConfirmModal from "./components/ConfirmModal";
 import CreateModal from "./components/CreateModal";
 import Add_btn from "../components/Add_btn";
+import useMonth from "../lib/hooks/useMonth";
+import useHabits from "../lib/hooks/useHabits";
 const DashboardPage = () => {
   const { user, isLoading } = useAuth();
   const router = useRouter();
-  const today = new Date();
-  const [month, setMonth] = useState<number>(today.getMonth());
-  const [year, setYear] = useState<number>(today.getFullYear());
-  const [check, setCheck] = useState<Record<string, Record<string, boolean>>>(
-    {}
-  );
+  const { today, month, year, handleChangeMonth } = useMonth();
+
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [habits, setHabits] = useState<Habit[]>([]);
+
   const [deleteHabitId, setDeleteHabitId] = useState<string | null>(null);
   const [editHabit, setEditHabit] = useState<Habit | null>(null);
   const [archiveHabitId, setArchiveHabitId] = useState<string | null>(null);
+  const { check, setCheck, habits, setHabits } = useHabits(user?.uid);
   const toggleCheck = async (habitId: string, dateStr: string) => {
     if (!user) return;
     await toggleCheckDayToDB(user.uid, habitId, dateStr);
@@ -67,26 +66,12 @@ const DashboardPage = () => {
     );
     setArchiveHabitId(null);
   };
-  const handleChangeMonth = (year: number, month: number) => {
-    setMonth(month);
-    setYear(year);
-  };
+
   useEffect(() => {
     if (!user && !isLoading) {
       router.push("/auth/login");
       return;
     }
-    if (!user) return;
-    const toFetchHabits = async () => {
-      const fetchedHabits = await getHabitsFromDB(user.uid);
-      setHabits(fetchedHabits as Habit[]);
-      const checkObj: Record<string, Record<string, boolean>> = {};
-      for (const habit of fetchedHabits) {
-        checkObj[habit.id] = habit.checkDays || {};
-      }
-      setCheck(checkObj);
-    };
-    toFetchHabits();
   }, [user, isLoading, router]);
   if (isLoading) return null;
   if (!user) return null;

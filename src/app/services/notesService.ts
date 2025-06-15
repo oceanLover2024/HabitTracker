@@ -26,7 +26,7 @@ export const addNoteToDB = async (
   const docRef = await addDoc(notesRef, {
     date: date,
     content: content,
-    createdAt: new Date().toISOString(),
+    createdAt: new Date().toLocaleDateString("sv-SE"),
   });
   return { id: docRef.id, date: date, content: content };
 };

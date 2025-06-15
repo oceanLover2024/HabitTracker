@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+}
+.progress_circle {
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+.text {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.percent {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+}
+.title {
+  color: gray;
+  font-size: 0.7rem;
+}

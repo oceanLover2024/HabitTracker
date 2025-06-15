@@ -164,9 +164,11 @@ const HabitTable = ({
                       date.getMonth() === today.getMonth() &&
                       date.getDate() === today.getDate();
                     const isLastRow = rowIndex === habits.length - 1;
-                    const dateStr = new Date(year, month, day)
-                      .toISOString()
-                      .slice(0, 10);
+                    const dateStr = new Date(
+                      year,
+                      month,
+                      day
+                    ).toLocaleDateString("sv-SE");
                     const isChecked = check[habit.id]?.[dateStr] ?? false;
                     const afterArchiveDate =
                       habit.archiveDate && dateStr >= habit.archiveDate;

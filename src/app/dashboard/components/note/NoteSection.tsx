@@ -17,7 +17,7 @@ const NoteSection = () => {
   const [showNoteModal, setShowNoteModal] = useState<boolean>(false);
   const [editNote, setEditNote] = useState<Note | null>(null);
   const { user } = useAuth();
-  const todayStr = new Date().toLocaleDateString("en-US", {
+  const todayStr = new Date().toLocaleDateString("en-GB", {
     year: "numeric",
     month: "long",
     day: "numeric",

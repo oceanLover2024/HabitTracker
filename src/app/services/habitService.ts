@@ -22,6 +22,7 @@ export const getHabitsFromDB = async (userId: string) => {
     checkDays: doc.data().checkDays ?? {},
     archiveDate: doc.data().archiveDate ?? "",
     order: doc.data().order,
+    createdAt: doc.data().createdAt ?? "",
   }));
 };
 export const addHabitToDB = async (
@@ -34,7 +35,7 @@ export const addHabitToDB = async (
   const docRef = await addDoc(habitRef, {
     name,
     goal,
-    createdAt: new Date().toISOString(),
+    createdAt: new Date().toLocaleDateString("sv-SE"),
     order: habitLength,
   });
   return { id: docRef.id, name, goal };
