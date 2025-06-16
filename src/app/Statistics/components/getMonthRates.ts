@@ -20,20 +20,24 @@ const getMonthRates = ({ year, habit }: Props): monthRate[] => {
       new Date(habit.createdAt).getFullYear() < year ||
       (new Date(habit.createdAt).getFullYear() === year &&
         new Date(habit.createdAt).getMonth() <= m);
+
     const expected = isHabitCreatedBeforeMonth ? habit.goal : 0;
+
     const percent =
-      expected === 0
-        ? completedDayCount === 0
-          ? 0
-          : 100
-        : completedDayCount >= habit.goal
+      habit.goal > 0
+        ? completedDayCount >= habit.goal
+          ? 100
+          : Math.round((completedDayCount / habit.goal) * 100)
+        : completedDayCount
         ? 100
-        : Math.round((completedDayCount / expected) * 100);
+        : 0;
+    console.log("百分比:", percent);
     const monthStr = new Date(year, m).toLocaleDateString("en-US", {
       month: "numeric",
     });
     result.push({ month: monthStr, percent: percent });
   }
+  console.log(result);
   return result;
 };
 export default getMonthRates;

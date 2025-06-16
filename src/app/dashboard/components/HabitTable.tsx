@@ -44,7 +44,9 @@ const HabitTable = ({
   const achieved_count = (habitId: string): number => {
     const checkDays = check[habitId];
     if (!checkDays) return 0;
-    return Object.values(checkDays).filter((v) => v).length;
+    return Object.entries(checkDays).filter(
+      ([date, value]) => new Date(date).getMonth() === month && value === true
+    ).length;
   };
   const achieve_goal = (habit: Habit) => achieved_count(habit.id) >= habit.goal;
   const [hoverId, setHoverId] = useState<string | null>(null);
