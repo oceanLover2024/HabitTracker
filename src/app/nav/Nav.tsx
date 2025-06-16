@@ -28,35 +28,35 @@ const Nav = () => {
         </Link>
         {pathname === "/dashboard" && user ? (
           <div className={styles.dropdown_wrapper}>
-            <button className={styles.dropdown_title}>
+            <div className={styles.dropdown_title}>
               How it works
               <RiArrowDropDownLine className={styles.icon} />
-            </button>
+            </div>
             <div className={styles.dropdown_box}>
-              <button
+              <div
                 className={styles.dropdown_item}
                 onClick={() => handleHowModal("how")}
               >
                 How to use DailyHabits
-              </button>
-              <button
+              </div>
+              <div
                 className={styles.dropdown_item}
                 onClick={() => handleHowModal("goals")}
               >
                 Why set goals
-              </button>
-              <button
+              </div>
+              <div
                 className={styles.dropdown_item}
                 onClick={() => handleHowModal("notes")}
               >
                 When to make notes
-              </button>
-              <button
+              </div>
+              <div
                 className={styles.dropdown_item}
                 onClick={() => handleHowModal("archive")}
               >
                 When to archive a goal
-              </button>
+              </div>
             </div>
           </div>
         ) : (
@@ -90,16 +90,14 @@ const Nav = () => {
             <div
               className={`${styles.dropdown_box} ${styles.mobile_dropdown_box}`}
             >
-              <Link href="/Statistics">
-                <div className={styles.dropdown_item}>Statistics</div>
+              <Link href="/Statistics" className={styles.dropdown_item}>
+                Statistics
               </Link>
 
-              <button className={styles.dropdown_item}>
-                Delete your account
-              </button>
-              <button onClick={handleLogout} className={styles.logout}>
+              <div className={styles.dropdown_item}>Delete your account</div>
+              <div onClick={handleLogout} className={styles.logout}>
                 Logout
-              </button>
+              </div>
             </div>
           </div>
         )}

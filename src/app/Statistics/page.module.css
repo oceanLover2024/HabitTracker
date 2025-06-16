@@ -1,12 +1,12 @@
-.statistics_title {
+/*.statistics_title {
   color: rgb(81, 80, 80);
   margin: 3% 5%;
-}
+}*/
 .wrapper {
   display: flex;
-  margin: 5% auto;
+  margin: 4% auto;
   width: 1200px;
-  padding: 2rem;
+  padding: 1rem 2rem;
 }
 .circle {
   display: flex;
@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 .habit_title {
@@ -43,6 +43,6 @@
     text-align: center;
   }
   .habit_title {
-    margin: 3% auto;
+    margin: 2rem auto;
   }
 }

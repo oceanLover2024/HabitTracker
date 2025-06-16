@@ -78,7 +78,7 @@
   background-color: transparent;
   border: none;
   padding: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: rgb(90, 88, 88);
   cursor: pointer;
   display: flex;
@@ -91,13 +91,14 @@
   display: block;
 }
 .dropdown_item {
+  display: block;
   width: 100%;
   padding: 8px 12px;
   background: none;
   border: none;
   text-align: left;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: black;
 }
 .dropdown_item:hover {
