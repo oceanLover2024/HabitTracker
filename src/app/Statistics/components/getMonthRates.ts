@@ -20,9 +20,6 @@ const getMonthRates = ({ year, habit }: Props): monthRate[] => {
       new Date(habit.createdAt).getFullYear() < year ||
       (new Date(habit.createdAt).getFullYear() === year &&
         new Date(habit.createdAt).getMonth() <= m);
-
-    const expected = isHabitCreatedBeforeMonth ? habit.goal : 0;
-
     const percent =
       habit.goal > 0
         ? completedDayCount >= habit.goal
