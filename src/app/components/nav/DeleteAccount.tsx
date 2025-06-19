@@ -7,7 +7,6 @@ import {
   reauthenticateWithCredential,
   EmailAuthProvider,
 } from "firebase/auth";
-import { useRouter } from "next/navigation";
 import Toast from "../toast/Toast";
 type DeleteAccountProps = {
   onClose: () => void;
@@ -21,7 +20,6 @@ const DeleteAccount = ({
   password,
   setPassword,
 }: DeleteAccountProps) => {
-  const router = useRouter();
   const auth = getAuth();
   const user = auth.currentUser;
   const [toastMessage, setToastMessage] = useState<string>("");

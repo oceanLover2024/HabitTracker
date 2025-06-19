@@ -15,7 +15,7 @@ type Props = {
   today: Date;
   habits: Habit[];
   check: Check;
-  isLoadingHabits: Boolean;
+  isLoadingHabits: boolean;
   setHabits: Dispatch<SetStateAction<Habit[]>>;
   setDeleteHabitId: Dispatch<SetStateAction<string | null>>;
   setEditHabit: Dispatch<SetStateAction<Habit | null>>;
