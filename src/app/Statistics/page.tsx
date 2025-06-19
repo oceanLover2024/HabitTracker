@@ -11,26 +11,12 @@ import GoalCircle from "./components/Circle";
 import NumberStat from "./components/NumberStat";
 import getMonthRates from "./components/getMonthRates";
 import MonthlyLineChart from "./components/MonthlyLineChart";
+import Link from "next/link";
 const Statistics = () => {
-  /*const monthText = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];*/
   const { user, isLoading } = useAuth();
   const router = useRouter();
   const { year, month, handleChangeMonth } = useMonth();
-  const { check, habits } = useHabits(user?.uid);
-
+  const { check, habits, isLoadingHabits } = useHabits(user?.uid);
   useEffect(() => {
     if (!user && !isLoading) router.push("/auth/login");
   }, [user, isLoading, router]);
@@ -43,9 +29,20 @@ const Statistics = () => {
         handleChangeMonth={handleChangeMonth}
       />
       <div className={styles.statistics_section}>
-        {/*  <h2 className={styles.statistics_title}>
-          Statistics for {year} {monthText[month]}
-        </h2>*/}
+        {habits.length === 0 && isLoadingHabits === false ? (
+          <div className={styles.no_statistics_content}>
+            <div>No statistics available yet.</div>
+            <div>
+              Start by adding a habit on the
+              <Link href="/dashboard" className={styles.habits_table_link}>
+                Habits table
+              </Link>
+              .
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         {habits.map((habit) => {
           const {
             thisMonthCheckDays,

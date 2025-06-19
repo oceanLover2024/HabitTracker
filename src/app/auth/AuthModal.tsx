@@ -3,6 +3,8 @@ import styles from "./sign.module.css";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FaStarOfLife } from "react-icons/fa6";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import Main_btn from "./components/Main_btn";
+import PasswordInput from "./components/PasswordInput";
 type AuthModalProps = {
   email: string;
   setEmail: Dispatch<SetStateAction<string>>;
@@ -12,6 +14,7 @@ type AuthModalProps = {
   title: string;
   btnText: string;
   isRegisterPage: boolean;
+  mode: "sign" | "reset";
 };
 const AuthModal = ({
   title,
@@ -22,11 +25,10 @@ const AuthModal = ({
   handleSign,
   btnText,
   isRegisterPage,
+  mode,
 }: AuthModalProps) => {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [noEmail, setNoEmail] = useState<boolean>(false);
-  const [noPassword, setNoPassword] = useState<boolean>(false);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const isValidEmail = (email: string) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const changeEmail = (email: string) => {
@@ -47,14 +49,7 @@ const AuthModal = ({
       setNoEmail(true);
     }
   };
-  const changePassword = (password: string) => {
-    setPassword(password);
-    if (password) {
-      setNoPassword(false);
-    } else {
-      setNoPassword(true);
-    }
-  };
+
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.title}>{title}</h2>
@@ -83,42 +78,20 @@ const AuthModal = ({
               : ""}
           </div>
         </div>
-        <div className={styles.input_wrapper}>
-          <div className={styles.label_star}>
-            <FaStarOfLife className={styles.star} />
-            Password
+        {mode === "sign" && (
+          <PasswordInput
+            password={password}
+            setPassword={setPassword}
+            isRegisterPage={isRegisterPage}
+          />
+        )}
+        {mode === "reset" && (
+          <div className={styles.remark_text}>
+            Enter your registered email to receive a link to reset your
+            password.
           </div>
-          <div className={styles.password_wrapper}>
-            <input
-              placeholder="Password"
-              value={password}
-              type={showPassword ? "text" : "password"}
-              onChange={(e) => changePassword(e.target.value)}
-              className={`${styles.input} ${
-                noPassword
-                  ? styles.error_input_style
-                  : styles.correct_input_style
-              }`}
-            />
-            <span
-              className={styles.eye}
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <FiEye /> : <FiEyeOff />}
-            </span>
-          </div>
-          <div className={styles.error_text}>
-            {noPassword ? "Please enter your password" : ""}
-            {isRegisterPage
-              ? password.length < 6 && password.length > 0
-                ? "Password must be minimum of 6 characters"
-                : ""
-              : ""}
-          </div>
-        </div>
-        <button onClick={handleSign} className={styles.btn}>
-          {btnText}
-        </button>
+        )}
+        <Main_btn btnText={btnText} handleSign={handleSign} />
       </div>
     </div>
   );

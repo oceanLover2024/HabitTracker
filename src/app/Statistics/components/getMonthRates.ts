@@ -25,13 +25,11 @@ const getMonthRates = ({ year, habit }: Props): monthRate[] => {
         : completedDayCount
         ? 100
         : 0;
-    console.log("百分比:", percent);
     const monthStr = new Date(year, m).toLocaleDateString("en-US", {
       month: "numeric",
     });
     result.push({ month: monthStr, percent: percent });
   }
-  console.log(result);
   return result;
 };
 export default getMonthRates;

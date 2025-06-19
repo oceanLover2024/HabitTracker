@@ -11,12 +11,18 @@ import {
   getNotesFromDB,
 } from "@/app/services/notesService";
 import { useAuth } from "@/app/contexts/AuthContext";
-import Add_btn from "@/app/components/Add_btn";
-const NoteSection = () => {
+import Add_btn from "@/app/components/btn/Add_btn";
+
+type notesServiceProps = {
+  month: number;
+  year: number;
+};
+const NoteSection = ({ month, year }: notesServiceProps) => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [showNoteModal, setShowNoteModal] = useState<boolean>(false);
   const [editNote, setEditNote] = useState<Note | null>(null);
   const { user } = useAuth();
+  const [hasFetchNotes, setHasFetchedNotes] = useState<boolean>(false);
   const todayStr = new Date().toLocaleDateString("en-GB", {
     year: "numeric",
     month: "long",
@@ -25,11 +31,12 @@ const NoteSection = () => {
   useEffect(() => {
     const toFetchNotes = async () => {
       if (!user) return;
-      const fetchedNotes = await getNotesFromDB(user.uid);
+      const fetchedNotes = await getNotesFromDB(user.uid, month, year);
       setNotes(fetchedNotes as Note[]);
+      setHasFetchedNotes(true);
     };
     toFetchNotes();
-  }, [user]);
+  }, [user, month, year]);
   const addNote = async (content: string) => {
     if (!user) return;
     const newNote = await addNoteToDB(user.uid, todayStr, content);
@@ -49,13 +56,16 @@ const NoteSection = () => {
     await deleteNoteToDB(user.uid, noteId);
     setNotes((prev) => prev.filter((n) => n.id !== noteId));
   };
+  if (!hasFetchNotes) {
+    return null;
+  }
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <div className={styles.notes_title}>Notes</div>
         <Add_btn setShowModal={setShowNoteModal} from="Note" />
       </div>
-      {notes.length === 0 ? (
+      {hasFetchNotes && notes.length === 0 ? (
         <div className={styles.no_note}>
           Create your first note by clicking on + New Note
         </div>

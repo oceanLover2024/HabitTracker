@@ -1,6 +1,7 @@
 import { AuthProvider } from "./contexts/AuthContext";
 import "./globals.css";
-import Nav from "./nav/Nav";
+import Nav from "./components/nav/Nav";
+import NProgressProvider from "./components/loading/TopLoader";
 export default function RootLayout({
   children,
 }: {
@@ -10,6 +11,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
+          <NProgressProvider />
           <Nav />
           {children}
         </AuthProvider>

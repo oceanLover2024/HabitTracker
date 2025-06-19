@@ -3,10 +3,15 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useAuth } from "./contexts/AuthContext";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 export default function Home() {
   const { user, isLoading } = useAuth();
-  if (isLoading) return;
-  if (user) return;
+  const router = useRouter();
+  useEffect(() => {
+    if (user && !isLoading) router.push("/dashboard");
+  }, [user, isLoading, router]);
+  if (isLoading || user) return;
   return (
     <>
       <div className={styles.wrapper}>
@@ -118,7 +123,29 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className={`${styles.wrapper} ${styles.wrapper_gray}`}>
+      <div className={styles.container}>
+        <div className={styles.pic_text_wrapper}>
+          <div className={styles.subtitle}>Visualize Your Progress.</div>
+          <div className={styles.instruction}>
+            See your monthly goal progress, daily streaks, and yearly trends in
+            one glance.
+            <br />
+            <br />
+            With data-driven visuals, our Statistics Page empowers you to
+            understand your habits, adjust your goals, and celebrate your growth
+            — one day at a time.
+          </div>
+        </div>
+        <div className={styles.image_wrapper}>
+          <Image
+            src={"/stat.png"}
+            alt={"statistics"}
+            fill
+            className={styles.img}
+          />
+        </div>
+      </div>
+      <div className={styles.wrapper}>
         <h1 className={styles.h1}>
           Get started for the rest of your life, today.
         </h1>

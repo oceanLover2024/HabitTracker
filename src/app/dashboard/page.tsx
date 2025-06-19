@@ -15,20 +15,21 @@ import {
 } from "../services/habitService";
 import ConfirmModal from "./components/ConfirmModal";
 import CreateModal from "./components/CreateModal";
-import Add_btn from "../components/Add_btn";
+import Add_btn from "../components/btn/Add_btn";
 import useMonth from "../lib/hooks/useMonth";
 import useHabits from "../lib/hooks/useHabits";
+
 const DashboardPage = () => {
   const { user, isLoading } = useAuth();
   const router = useRouter();
   const { today, month, year, handleChangeMonth } = useMonth();
-
   const [showModal, setShowModal] = useState<boolean>(false);
-
   const [deleteHabitId, setDeleteHabitId] = useState<string | null>(null);
   const [editHabit, setEditHabit] = useState<Habit | null>(null);
   const [archiveHabitId, setArchiveHabitId] = useState<string | null>(null);
-  const { check, setCheck, habits, setHabits } = useHabits(user?.uid);
+  const { check, setCheck, habits, setHabits, isLoadingHabits } = useHabits(
+    user?.uid
+  );
   const toggleCheck = async (habitId: string, dateStr: string) => {
     if (!user) return;
     await toggleCheckDayToDB(user.uid, habitId, dateStr);
@@ -58,7 +59,7 @@ const DashboardPage = () => {
   };
   const handleArchive = async (habitId: string) => {
     if (!user) return;
-    const todayStr = new Date().toISOString().slice(0, 10);
+    const todayStr = new Date().toLocaleDateString("sv-SE");
     await archiveHabitFromDB(user.uid, habitId, todayStr);
     setHabits((prev) =>
       prev.map((h) => (h.id === habitId ? { ...h, archiveDate: todayStr } : h))
@@ -72,8 +73,9 @@ const DashboardPage = () => {
       return;
     }
   }, [user, isLoading, router]);
-  if (isLoading) return null;
-  if (!user) return null;
+  if (!user || isLoading) {
+    return null;
+  }
   return (
     <div>
       <MonthSelector
@@ -92,6 +94,7 @@ const DashboardPage = () => {
         setDeleteHabitId={setDeleteHabitId}
         setEditHabit={setEditHabit}
         setArchiveHabitId={setArchiveHabitId}
+        isLoadingHabits={isLoadingHabits}
       />
       {deleteHabitId && (
         <ConfirmModal
@@ -100,6 +103,7 @@ const DashboardPage = () => {
           title="Delete Habit?"
           content="Completely remove a habit from the habit tracker. This cannot be
             undone. Archive a habit if you mean to stop tracking it further."
+          yes="Yes"
         />
       )}
       {archiveHabitId && (
@@ -108,6 +112,7 @@ const DashboardPage = () => {
           onConfirm={() => handleArchive(archiveHabitId)}
           title="Archive Habit?"
           content="Archive a habit when you want to stop tracking it from today. Archived habits cannot be unarchived."
+          yes="Yes"
         />
       )}
       {editHabit && (
@@ -127,7 +132,7 @@ const DashboardPage = () => {
           title="Create New Habit"
         />
       )}
-      <NoteSection />
+      <NoteSection month={month} year={year} />
     </div>
   );
 };

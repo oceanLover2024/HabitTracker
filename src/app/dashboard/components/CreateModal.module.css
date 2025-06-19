@@ -111,17 +111,18 @@
 .yes_no_modal {
   width: 520px;
   margin: 100px auto;
-  height: 200px;
+  min-height: 200px;
   background-color: white;
 }
 .yes_No_text {
   line-height: 1.5rem;
   font-size: 0.9rem;
   color: rgb(57, 57, 57);
+  white-space: pre-line;
 }
 .yes_btn {
   background-color: black;
-  width: 50px;
+  padding: 0.5rem 1rem;
   height: 32px;
   color: white;
   cursor: pointer;
@@ -153,7 +154,8 @@
   line-height: 1.25rem;
 }
 @media (max-width: 600px) {
-  .modal {
+  .modal,
+  .yes_no_modal {
     width: 90%;
   }
 }

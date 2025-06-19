@@ -1,3 +1,6 @@
+.outer {
+  position: relative;
+}
 .nav {
   display: flex;
   justify-content: space-between;
@@ -10,6 +13,9 @@
   font-size: 1.5rem;
   color: black;
   text-decoration: none;
+}
+.logo:hover {
+  color: rgb(74, 73, 73);
 }
 .right {
   display: flex;
@@ -35,6 +41,22 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
+  color: black;
+}
+.stat_email_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.statistics_link {
+  border: 1px solid rgb(214, 210, 210);
+  cursor: pointer;
+  color: rgb(90, 88, 88);
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+.statistics_link:hover {
+  background-color: rgba(241, 244, 242, 0.819);
   color: black;
 }
 .dropdown_wrapper {
@@ -100,12 +122,24 @@
   cursor: pointer;
   font-size: 0.9rem;
   color: black;
+  position: relative; /*for delete account*/
 }
 .dropdown_item:hover {
   background-color: rgba(214, 212, 212, 0.287);
 }
 .mobile_menu {
   display: none;
+}
+.mobile_short_text {
+  margin-left: 0.3rem;
+}
+@media (max-width: 1200px) {
+  .left {
+    gap: 1rem;
+  }
+  .stat_email_wrapper {
+    gap: 1rem;
+  }
 }
 @media (max-width: 600px) {
   .mobile_menu {
@@ -123,5 +157,22 @@
   .mobile_dropdown_box {
     left: auto;
     right: 0;
+  }
+
+  .left {
+    gap: 0.3rem;
+  }
+  .stat_email_wrapper {
+    gap: 0.3rem;
+  }
+  .statistics_link {
+    padding: 0.3rem 0.5rem;
+  }
+  .mobile_short_text {
+    display: none;
+  }
+  .statistics_link,
+  .dropdown_title {
+    font-size: 0.8rem;
   }
 }

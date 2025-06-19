@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./CreateModal.module.css";
 import { FaStarOfLife } from "react-icons/fa6";
 import { useEscape } from "@/app/lib/hooks/useEscape";
-import Toast from "@/app/components/Toast";
+import Toast from "@/app/components/toast/Toast";
 import { Habit } from "./type/habitType";
 type CreateModalProps = {
   onClose: () => void;
@@ -74,6 +74,7 @@ const CreateModal = ({ onClose, onSave, title, habit }: CreateModalProps) => {
                 placeholder="Number of times to perform habit in a month"
                 type="number"
                 min={0}
+                max={31}
                 value={goal}
                 onChange={(e) => setGoal(Number(e.target.value))}
                 className={`${styles.input} ${styles.correct_input_style}`}

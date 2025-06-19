@@ -15,6 +15,7 @@ type Props = {
   today: Date;
   habits: Habit[];
   check: Check;
+  isLoadingHabits: Boolean;
   setHabits: Dispatch<SetStateAction<Habit[]>>;
   setDeleteHabitId: Dispatch<SetStateAction<string | null>>;
   setEditHabit: Dispatch<SetStateAction<Habit | null>>;
@@ -28,6 +29,7 @@ const HabitTable = ({
   today,
   habits,
   check,
+  isLoadingHabits,
   toggleCheck,
   setHabits,
   setDeleteHabitId,
@@ -120,7 +122,7 @@ const HabitTable = ({
             </tr>
           </thead>
           <tbody>
-            {habits.length > 0 ? (
+            {!isLoadingHabits && habits.length > 0 ? (
               habits.map((habit, rowIndex) => (
                 <tr
                   key={habit.id}

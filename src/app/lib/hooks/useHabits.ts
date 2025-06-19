@@ -6,9 +6,11 @@ const useHabits = (userId: string | null | undefined) => {
   const [check, setCheck] = useState<Record<string, Record<string, boolean>>>(
     {}
   );
+  const [isLoadingHabits, setIsLoadingHabits] = useState<boolean>(true);
   useEffect(() => {
     if (!userId) return;
     const fetch = async () => {
+      setIsLoadingHabits(true);
       const fetchedHabits = await getHabitsFromDB(userId);
       setHabits(fetchedHabits);
       const checkObj: Record<string, Record<string, boolean>> = {};
@@ -16,9 +18,10 @@ const useHabits = (userId: string | null | undefined) => {
         checkObj[habit.id] = habit.checkDays || {};
       }
       setCheck(checkObj);
+      setIsLoadingHabits(false);
     };
     fetch();
   }, [userId]);
-  return { check, setCheck, habits, setHabits };
+  return { check, setCheck, habits, setHabits, isLoadingHabits };
 };
 export default useHabits;

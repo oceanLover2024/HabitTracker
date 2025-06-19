@@ -6,7 +6,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import AuthModal from "../AuthModal";
-import Toast from "../../components/Toast";
+import Toast from "../../components/toast/Toast";
+import Link from "next/link";
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -40,9 +41,11 @@ const Login = () => {
         title="Login to your HabitTracker account"
         btnText="Login"
         isRegisterPage={false}
+        mode="sign"
       />
-      <div className={styles.forgot_link}>
-        Forgot your password? <a>Reset password</a>
+      <div className={styles.remark_text}>
+        Forgot your password?{" "}
+        <Link href="/auth/resetPassword">Reset password</Link>
       </div>
       {toastMessage && (
         <Toast
