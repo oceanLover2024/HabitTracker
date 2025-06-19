@@ -2,7 +2,6 @@
 import styles from "./sign.module.css";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FaStarOfLife } from "react-icons/fa6";
-import { FiEye, FiEyeOff } from "react-icons/fi";
 import Main_btn from "./components/Main_btn";
 import PasswordInput from "./components/PasswordInput";
 type AuthModalProps = {
