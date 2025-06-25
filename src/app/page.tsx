@@ -22,7 +22,7 @@ export default function Home() {
           Finally, a daily habit tracker that helps you do more, by doing less.
         </div>
         <div className={styles.btn_text_wrapper}>
-          <Link href="/auth/register" className={styles.start_link}>
+          <Link href="/auth/login" className={styles.start_link}>
             <span>✅Start Habit Tracker today</span>
           </Link>
           <div className={styles.below_btn_text}>100% free forever</div>
@@ -154,7 +154,7 @@ export default function Home() {
           That&apos;s why DailyHabits is a 100% free to use.
         </div>
         <div className={styles.btn_text_wrapper}>
-          <Link href="/auth/register" className={styles.start_link}>
+          <Link href="/auth/login" className={styles.start_link}>
             <span>✅Start Habit Tracker today</span>
           </Link>
           <div className={styles.below_btn_text}>100% free forever</div>

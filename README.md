@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+[`Habit Tracker`](https://habit-tracker-five-jet.vercel.app/dashboard)
 
-## Getting Started
+# Habit Tracker Web App
 
-First, run the development server:
+A modern web application that helps users track daily habits, set monthly goals, and visualize progress with interactive statistics and charts.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Demo](./public/demo.gif)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Responsive Web Design
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![RWD](./public/rwd.gif)
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Authentication**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - Sign up, login, and logout with Firebase Authentication
+  - React Context handles global auth state
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Habit Management**
 
-## Deploy on Vercel
+  - Add, edit, delete, archive habits
+  - Set monthly goals for each habit
+  - Drag and drop to reorder habits
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Daily Tracking**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+  - Mark daily habit completions (check)
+  - All check states are saved in Firestore per habit and date
+
+- **Note Section**
+
+  - Make daily notes to keep a track
+
+- **Statistics Page**
+
+  - View habit streaks, monthly goal completion rate, and yearly trends
+  - Circle progress indicators for goal/month completion
+  - Line chart for 12-month performance
+
+- **Calendar Support**
+
+  - Month selector for viewing past habit records
+  - Data visualization changes according to selected month
+
+## Tech Stack
+
+![Tech Stack](./public/techStack.png)
+
+## Component Structure
+
+![Component Structure](./public/components.png)
+
+## Architecture Highlights
+
+- **React Context** for global user state management
+- **Custom Hooks** for abstracting logic:
+
+  - `useAuth` for login status
+  - `useMonth` for consistent month/year state
+  - `useHabits` for syncing habit and check data
+  - `useDrag` for encapsulates the logic for drag-and-drop sorting of habit items
+  - `useEscape` for centralized handler for closing interactive modals using the Escape key
+
+- **Component-based structure** with separation of UI, state, and logic

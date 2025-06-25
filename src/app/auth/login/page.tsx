@@ -9,8 +9,8 @@ import AuthModal from "../AuthModal";
 import Toast from "../../components/toast/Toast";
 import Link from "next/link";
 const Login = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("test@example.com");
+  const [password, setPassword] = useState<string>("testtest");
   const router = useRouter();
   const [toastMessage, setToastMessage] = useState<string>("");
   const handleSignIn = async () => {
