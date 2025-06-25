@@ -1,6 +1,6 @@
-[`Habit Tracker`](https://habit-tracker-five-jet.vercel.app/dashboard)
-
 # Habit Tracker Web App
+
+🔗 Live Website[` Habit Tracker`](https://habit-tracker-five-jet.vercel.app/)
 
 A modern web application that helps users track daily habits, set monthly goals, and visualize progress with interactive statistics and charts.
 
